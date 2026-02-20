@@ -1,0 +1,87 @@
+[gd_scene load_steps=9 format=3 uid="uid://620flijjsjyj"]
+
+[ext_resource type="Texture2D" uid="uid://b4k4q8jbhsqm5" path="res://prototyping/network test/bg.jpg" id="1_howc7"]
+[ext_resource type="Texture2D" uid="uid://chr1ugmxhaec7" path="res://prototyping/network test/connect.png" id="2_212id"]
+[ext_resource type="Script" path="res://prototyping/network test/log.gd" id="2_837vg"]
+[ext_resource type="Script" path="res://prototyping/network test/connect_button.gd" id="3_t717q"]
+[ext_resource type="Texture2D" uid="uid://b87ue7loodl8h" path="res://prototyping/network test/send.png" id="4_t717q"]
+[ext_resource type="Script" path="res://prototyping/network test/send.gd" id="5_6l0g0"]
+[ext_resource type="Texture2D" uid="uid://c0a5w5ipatw0p" path="res://prototyping/network test/disconnect.png" id="6_trk3l"]
+[ext_resource type="Script" path="res://prototyping/network test/disconnect.gd" id="7_6l0g0"]
+
+[node name="NetworkTest" type="Node2D"]
+
+[node name="Bg" type="Sprite2D" parent="."]
+position = Vector2(622, 350)
+texture = ExtResource("1_howc7")
+
+[node name="log" type="RichTextLabel" parent="."]
+offset_left = 57.0
+offset_top = 38.0
+offset_right = 1209.0
+offset_bottom = 443.0
+theme_override_font_sizes/normal_font_size = 26
+text = "guh
+guh
+guh
+guh
+guh
+guh
+guh
+guh
+guh
+guh
+guh
+guh
+guh
+guh
+guh
+guh
+guh
+guh
+"
+script = ExtResource("2_837vg")
+
+[node name="connect button" type="TouchScreenButton" parent="."]
+position = Vector2(33, 576)
+scale = Vector2(0.630695, 1)
+texture_normal = ExtResource("2_212id")
+texture_pressed = ExtResource("2_212id")
+script = ExtResource("3_t717q")
+metadata/_custom_type_script = "uid://b3oy0pt47fses"
+
+[node name="URL" type="LineEdit" parent="connect button"]
+offset_left = 38.0532
+offset_top = -114.0
+offset_right = 550.186
+offset_bottom = -28.0
+theme_override_font_sizes/font_size = 26
+text = "wss://ws.postman-echo.com/raw"
+
+[node name="send" type="TouchScreenButton" parent="."]
+position = Vector2(811, 575)
+scale = Vector2(0.996429, 0.607362)
+texture_normal = ExtResource("4_t717q")
+texture_pressed = ExtResource("4_t717q")
+script = ExtResource("5_6l0g0")
+metadata/_custom_type_script = "uid://b3oy0pt47fses"
+
+[node name="message" type="LineEdit" parent="send"]
+offset_left = -143.513
+offset_top = -169.586
+offset_right = 350.487
+offset_bottom = -83.5859
+theme_override_font_sizes/font_size = 26
+text = "message to send"
+
+[node name="Disconnect" type="TouchScreenButton" parent="."]
+position = Vector2(396, 576)
+scale = Vector2(0.572464, 0.638462)
+texture_normal = ExtResource("6_trk3l")
+texture_pressed = ExtResource("6_trk3l")
+script = ExtResource("7_6l0g0")
+metadata/_custom_type_script = "uid://b3oy0pt47fses"
+
+[connection signal="button_activated" from="connect button" to="connect button" method="_on_button_activated"]
+[connection signal="button_activated" from="send" to="send" method="_on_button_activated"]
+[connection signal="button_activated" from="Disconnect" to="Disconnect" method="_on_button_activated"]

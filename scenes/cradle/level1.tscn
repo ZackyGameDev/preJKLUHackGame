@@ -1,0 +1,182 @@
+[gd_scene load_steps=18 format=3 uid="uid://djwjaxxi67i8"]
+
+[ext_resource type="Texture2D" uid="uid://d21sx6t274ajv" path="res://scenes/cradle/bg.png" id="1_cjnt2"]
+[ext_resource type="Texture2D" uid="uid://cfuqt241shjyc" path="res://scenes/cradle/mother/mother.png" id="2_gxhpc"]
+[ext_resource type="Texture2D" uid="uid://ct1pfo3hqxi0w" path="res://scenes/cradle/father/father.png" id="3_gxhpc"]
+[ext_resource type="Script" uid="uid://cs5ojrn16or1b" path="res://scenes/cradle/father.gd" id="3_kh4ss"]
+[ext_resource type="Texture2D" uid="uid://crsrcjaowekgg" path="res://scenes/cradle/father/!.png" id="5_3if8t"]
+[ext_resource type="FontFile" uid="uid://c7glolov766km" path="res://NotoSansGurmukhi-VariableFont_wdth,wght.ttf" id="5_8uuc5"]
+[ext_resource type="Texture2D" uid="uid://d3njwryppr20r" path="res://scenes/cradle/nothing.png" id="5_svx66"]
+[ext_resource type="Script" uid="uid://cvnnfumtk086r" path="res://scenes/cradle/tea.gd" id="5_wuccj"]
+[ext_resource type="Texture2D" uid="uid://0xfvmvctua6i" path="res://scenes/cradle/bed.png" id="7_b3blt"]
+[ext_resource type="Texture2D" uid="uid://tlnxhwk2alpp" path="res://scenes/cradle/cradle.png" id="8_3if8t"]
+[ext_resource type="Script" uid="uid://brhnw0srvo7o6" path="res://scenes/cradle/milk.gd" id="8_ajy25"]
+[ext_resource type="Script" uid="uid://bbybkag5lv165" path="res://scenes/cradle/toy.gd" id="9_mu5wi"]
+[ext_resource type="Script" uid="uid://dcr1v4g28et1l" path="res://scenes/cradle/paint.gd" id="10_8uuc5"]
+[ext_resource type="Script" uid="uid://dw8rl20bj6wxn" path="res://scenes/cradle/window.gd" id="11_1srby"]
+[ext_resource type="Script" uid="uid://b80fs1numdoj3" path="res://scenes/cradle/tasks.gd" id="11_vv8cv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kh4ss"]
+radius = 25.0799
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_svx66"]
+bg_color = Color(0.972549, 0.911007, 0.840224, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.362418, 0.262546, 0.0451843, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="Level1" type="Node2D"]
+
+[node name="Bg" type="Sprite2D" parent="."]
+position = Vector2(645, 382)
+scale = Vector2(0.84, 0.84)
+texture = ExtResource("1_cjnt2")
+
+[node name="Mother" type="Sprite2D" parent="."]
+z_index = 98
+position = Vector2(-221, 559)
+scale = Vector2(0.8833303, 0.9069371)
+texture = ExtResource("2_gxhpc")
+
+[node name="father" type="CharacterBody2D" parent="."]
+position = Vector2(488, 469)
+script = ExtResource("3_kh4ss")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="father"]
+position = Vector2(0, -136.36)
+scale = Vector2(0.467638, 0.472179)
+texture = ExtResource("3_gxhpc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="father"]
+shape = SubResource("CircleShape2D_kh4ss")
+
+[node name="Ray_F" type="RayCast2D" parent="father"]
+
+[node name="Ray_L" type="RayCast2D" parent="father"]
+
+[node name="Ray_R" type="RayCast2D" parent="father"]
+
+[node name="SpeechBubble" type="Node2D" parent="father"]
+
+[node name="Panel" type="Panel" parent="father/SpeechBubble"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_svx66")
+
+[node name="Label" type="Label" parent="father/SpeechBubble/Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.121569, 0.12549, 0.0901961, 1)
+theme_override_fonts/font = ExtResource("5_8uuc5")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="!" type="Sprite2D" parent="father/SpeechBubble"]
+visible = false
+position = Vector2(0, -268.645)
+scale = Vector2(0.33, 0.33)
+texture = ExtResource("5_3if8t")
+
+[node name="objs" type="Node2D" parent="."]
+
+[node name="tea" type="TouchScreenButton" parent="objs"]
+position = Vector2(689, 283)
+scale = Vector2(1.4, 1.06)
+texture_normal = ExtResource("5_svx66")
+texture_pressed = ExtResource("5_svx66")
+script = ExtResource("5_wuccj")
+npc = NodePath("../../father")
+metadata/_custom_type_script = "uid://b3oy0pt47fses"
+
+[node name="milk" type="TouchScreenButton" parent="objs"]
+position = Vector2(468, 346)
+scale = Vector2(1, 1.74)
+texture_normal = ExtResource("5_svx66")
+texture_pressed = ExtResource("5_svx66")
+script = ExtResource("8_ajy25")
+npc = NodePath("../../father")
+metadata/_custom_type_script = "uid://b3oy0pt47fses"
+
+[node name="toy" type="TouchScreenButton" parent="objs"]
+position = Vector2(293, 333)
+scale = Vector2(2.4, 1.7800001)
+texture_normal = ExtResource("5_svx66")
+texture_pressed = ExtResource("5_svx66")
+script = ExtResource("9_mu5wi")
+npc = NodePath("../../father")
+metadata/_custom_type_script = "uid://b3oy0pt47fses"
+
+[node name="paint" type="TouchScreenButton" parent="objs"]
+position = Vector2(371, 99.99999)
+scale = Vector2(2.18, 1.7600001)
+texture_normal = ExtResource("5_svx66")
+texture_pressed = ExtResource("5_svx66")
+script = ExtResource("10_8uuc5")
+npc = NodePath("../../father")
+metadata/_custom_type_script = "uid://b3oy0pt47fses"
+
+[node name="window" type="TouchScreenButton" parent="objs"]
+position = Vector2(8, 26)
+scale = Vector2(5.5999985, 5.4799995)
+texture_normal = ExtResource("5_svx66")
+texture_pressed = ExtResource("5_svx66")
+script = ExtResource("11_1srby")
+npc = NodePath("../../father")
+metadata/_custom_type_script = "uid://b3oy0pt47fses"
+
+[node name="Cradle" type="Sprite2D" parent="."]
+z_index = 99
+position = Vector2(645, 627)
+scale = Vector2(0.84, 0.84)
+texture = ExtResource("8_3if8t")
+
+[node name="bed" type="StaticBody2D" parent="."]
+
+[node name="Bed" type="Sprite2D" parent="bed"]
+z_index = 60
+z_as_relative = false
+position = Vector2(893, 432)
+scale = Vector2(0.84, 0.84)
+texture = ExtResource("7_b3blt")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="bed"]
+z_index = 60
+position = Vector2(4, -44)
+polygon = PackedVector2Array(526, 576, 801, 433, 1311, 487, 1303, 662, 1291, 717, 523, 623)
+
+[node name="wall" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="wall"]
+polygon = PackedVector2Array(-43, 522, 130, -96, 506, -162, 1048, 489, 507, 404)
+
+[node name="Tasks" type="Panel" parent="."]
+offset_left = 912.0
+offset_top = 5.0
+offset_right = 1278.0
+offset_bottom = 194.0
+script = ExtResource("11_vv8cv")
+
+[node name="list" type="RichTextLabel" parent="Tasks"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 7.0
+offset_right = 351.0
+offset_bottom = 178.0
+theme_override_font_sizes/normal_font_size = 21
+bbcode_enabled = true
+text = "[s]tasjs[/s]"
+
+[connection signal="button_activated" from="objs/tea" to="objs/tea" method="_on_button_activated"]
+[connection signal="button_activated" from="objs/milk" to="objs/milk" method="_on_button_activated"]
+[connection signal="button_activated" from="objs/toy" to="objs/toy" method="_on_button_activated"]
+[connection signal="button_activated" from="objs/paint" to="objs/paint" method="_on_button_activated"]
+[connection signal="button_activated" from="objs/window" to="objs/window" method="_on_button_activated"]
