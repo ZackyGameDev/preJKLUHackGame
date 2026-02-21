@@ -29,9 +29,9 @@ var tasks = [
 
 var done = [
 	false,
-	true,
-	true,
-	true,
+	false,
+	false,
+	false,
 ]
 
 func _ready() -> void:

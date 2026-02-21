@@ -48,6 +48,7 @@ func _tasks_processed() -> void:
 func dia_prep(res):
 	if res["evaluation"]["tasks"][0]["completed"]:
 		done[0] = true
+		get_parent().start_fade_sequence()
 
 func _on_mother_done_speaking(res: Variant) -> void:
 	var grades = res["evaluation"]["tasks"]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://df8gutc5a5k33"]
+[gd_scene load_steps=21 format=3 uid="uid://df8gutc5a5k33"]
 
 [ext_resource type="Texture2D" uid="uid://fdvgba5oft8y" path="res://scenes/preschool/bg.png" id="1_sgi5d"]
+[ext_resource type="Script" uid="uid://c1ekh2ivch7t5" path="res://scenes/preschool/level_2.gd" id="1_t7gxt"]
 [ext_resource type="Texture2D" uid="uid://b42kkhovtx0pt" path="res://scenes/preschool/1.png" id="2_5icoo"]
 [ext_resource type="Texture2D" uid="uid://br386v1xfmhgt" path="res://scenes/preschool/2.png" id="3_nvon3"]
 [ext_resource type="Texture2D" uid="uid://6i65cnr3pje5" path="res://scenes/preschool/3.png" id="3_t8p1s"]
@@ -14,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bblrixfp52d7k" path="res://scenes/cradle/mickey.png" id="12_3jbwi"]
 [ext_resource type="Script" uid="uid://c3r01iuu2aqor" path="res://scenes/cradle/voice.gd" id="13_t7gxt"]
 [ext_resource type="Script" uid="uid://crw5qgv8cbrmy" path="res://scenes/cradle/transcription.gd" id="14_f1prg"]
+[ext_resource type="Texture2D" uid="uid://b54jr0qu5xt75" path="res://white.png" id="16_f1prg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bj25i"]
 radius = 40.93
@@ -46,6 +48,7 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [node name="Level2" type="Node2D"]
+script = ExtResource("1_t7gxt")
 
 [node name="Bg" type="Sprite2D" parent="."]
 position = Vector2(445.55997, 271.03998)
@@ -255,8 +258,30 @@ theme_override_font_sizes/normal_font_size = 21
 bbcode_enabled = true
 text = "[s]tasjs[/s]"
 
+[node name="White" type="Sprite2D" parent="."]
+visible = false
+z_index = 290
+position = Vector2(646, 333)
+scale = Vector2(6.240741, 2.1377552)
+texture = ExtResource("16_f1prg")
+
+[node name="end" type="RichTextLabel" parent="."]
+visible = false
+z_index = 415
+offset_left = 140.0
+offset_top = 130.0
+offset_right = 1088.0
+offset_bottom = 524.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 46
+text = "Congratulations. 
+You have reached, the end of our one day build demo.
+We hope you enjoyed all we could produce in 24 hours. "
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="button_activated" from="1/1but" to="1/1but" method="_on_button_activated"]
 [connection signal="button_activated" from="speech/voice" to="speech/voice" method="_on_button_activated"]
 [connection signal="button_activated" from="speech/voice" to="speech/Panel/transcription" method="_on_voice_button_activated"]
-[connection signal="speech_received" from="speech/voice" to="Tasks" method="_on_voice_speech_received"]
 [connection signal="speech_received" from="speech/voice" to="speech/Panel/transcription" method="_on_voice_speech_received"]
+[connection signal="speech_received" from="speech/voice" to="Tasks" method="_on_voice_speech_received"]
